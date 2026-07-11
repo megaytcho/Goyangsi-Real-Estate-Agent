@@ -139,6 +139,74 @@ section {
   color: var(--text-secondary);
 }
 
+/* ---------- Specs ---------- */
+
+.specs-section {
+  background: var(--bg);
+}
+
+.specs-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.spec-item {
+  background: #fff;
+  padding: 44px 20px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.spec-item:hover {
+  background: var(--bg-alt);
+}
+
+.spec-value {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.spec-unit {
+  font-size: 0.6em;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.spec-label {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.specs-features {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 36px auto 0;
+}
+
+.feature-pill {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
 /* ---------- Building diagram ---------- */
 
 .building-section {
@@ -247,6 +315,10 @@ footer {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 760px) {
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .building-wrap {
     grid-template-columns: 1fr;
     gap: 36px;
