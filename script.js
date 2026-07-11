@@ -1,19 +1,102 @@
+const floorData = {
+  f5: {
+    label: "5층",
+    title: "5층",
+    rooms: [
+      { room: "502호", area: "45.71㎡ (13.8평)", deposit: "2,000만원", rent: "100만원" },
+    ],
+  },
+  f4: {
+    label: "4층",
+    title: "4층",
+    rooms: [
+      { room: "401호", area: "99.84㎡ (30.2평)", deposit: "3,000만원", rent: "210만원" },
+    ],
+  },
+  f3: {
+    label: "3층",
+    title: "3층",
+    rooms: [
+      { room: "301호", area: "77.23㎡ (23.4평)", deposit: "3,000만원", rent: "160만원" },
+      { room: "302호", area: "65.45㎡ (19.8평)", deposit: "2,000만원", rent: "140만원" },
+    ],
+  },
+  f2: {
+    label: "2층",
+    title: "2층",
+    rooms: [
+      { room: "201호", area: "104.94㎡ (31.7평)", deposit: "3,000만원", rent: "210만원" },
+      { room: "202호", area: "50.51㎡ (15.3평)", deposit: "2,000만원", rent: "100만원" },
+    ],
+  },
+  f1: {
+    label: "1층",
+    title: "1층 · 상가",
+    rooms: [
+      { room: "101호", area: "54.82㎡ (16.6평)", deposit: "2,000만원", rent: "160만원" },
+      {
+        room: "103호",
+        area: "176.66㎡ (53.5평)",
+        deposit: "6,000만원",
+        rent: "520만원",
+        note: "식당 설비 및 집기 구비 · 권리금 없음 (기존 감자탕 식당 운영, 업종 변경 가능)",
+      },
+    ],
+  },
+  b1: {
+    label: "지하 1층",
+    title: "지하 1층 · 주차장",
+    desc: "입주 세대를 위한 지하 주차장입니다.",
+  },
+};
+
 const floors = document.querySelectorAll(".floor");
 const label = document.getElementById("floor-label");
 const title = document.getElementById("floor-title");
-const desc = document.getElementById("floor-desc");
+const roomsEl = document.getElementById("floor-rooms");
+const content = document.getElementById("floor-info-content");
 
-function showFloor(floor) {
+function renderFloor(key) {
+  const data = floorData[key];
+
+  label.textContent = data.label;
+  title.textContent = data.title;
+  roomsEl.innerHTML = "";
+
+  if (data.rooms) {
+    data.rooms.forEach((r) => {
+      const room = document.createElement("div");
+      room.className = "room";
+      room.innerHTML = `
+        <div class="room-head">
+          <span class="room-number">${r.room}</span>
+          <span class="room-area">${r.area}</span>
+        </div>
+        <div class="room-terms">
+          <span>보증금 ${r.deposit}</span>
+          <span>월세 ${r.rent}</span>
+        </div>
+        ${r.note ? `<div class="room-note">${r.note}</div>` : ""}
+      `;
+      roomsEl.appendChild(room);
+    });
+  } else if (data.desc) {
+    const empty = document.createElement("div");
+    empty.className = "room-empty";
+    empty.textContent = data.desc;
+    roomsEl.appendChild(empty);
+  }
+}
+
+function showFloor(floorEl) {
+  const key = floorEl.dataset.floor;
   floors.forEach((f) => f.classList.remove("active"));
-  floor.classList.add("active");
+  floorEl.classList.add("active");
 
-  [label, title, desc].forEach((el) => (el.style.opacity = 0));
-
+  content.style.opacity = 0;
   setTimeout(() => {
-    label.textContent = floor.dataset.label;
-    title.textContent = floor.dataset.title;
-    desc.textContent = floor.dataset.desc;
-    [label, title, desc].forEach((el) => (el.style.opacity = 1));
+    renderFloor(key);
+    content.style.opacity = 1;
   }, 150);
 }
 
@@ -22,6 +105,8 @@ floors.forEach((floor) => {
   floor.addEventListener("focus", () => showFloor(floor));
   floor.addEventListener("click", () => showFloor(floor));
 });
+
+renderFloor("f1");
 
 const observer = new IntersectionObserver(
   (entries) => {
