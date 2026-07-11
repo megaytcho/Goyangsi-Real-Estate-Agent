@@ -234,17 +234,6 @@ section {
   transition: opacity 0.25s ease;
 }
 
-/* ---------- Gallery ---------- */
-
-.gallery-section {
-  padding: 0;
-}
-
-.gallery-image {
-  width: 100%;
-  display: block;
-}
-
 /* ---------- Footer ---------- */
 
 footer {
