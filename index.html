@@ -2,9 +2,64 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>고양시 부동산</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>루체아빌딩 | 고양시 부동산</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>고양시 부동산</h1>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-title">루체아빌딩</div>
+      <div class="hero-subtitle">고양시</div>
+    </div>
+    <div class="scroll-cue">
+      아래로 스크롤
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="building-section">
+    <div class="section-heading">
+      <h2>층별 안내</h2>
+      <p>각 층에 마우스를 올려 자세한 정보를 확인해보세요.</p>
+    </div>
+
+    <div class="building-wrap">
+      <div class="building">
+        <div class="floor" tabindex="0"
+          data-label="5층" data-title="5층" data-desc="내용을 입력해주세요.">5F</div>
+        <div class="floor" tabindex="0"
+          data-label="4층" data-title="4층" data-desc="내용을 입력해주세요.">4F</div>
+        <div class="floor" tabindex="0"
+          data-label="3층" data-title="3층" data-desc="내용을 입력해주세요.">3F</div>
+        <div class="floor" tabindex="0"
+          data-label="2층" data-title="2층" data-desc="내용을 입력해주세요.">2F</div>
+        <div class="floor" tabindex="0"
+          data-label="1층" data-title="1층 · 상가" data-desc="내용을 입력해주세요.">1F</div>
+        <div class="floor basement" tabindex="0"
+          data-label="지하 1층" data-title="지하 1층 · 주차장" data-desc="내용을 입력해주세요.">B1</div>
+      </div>
+
+      <div class="floor-info">
+        <div class="floor-info-label" id="floor-label">1층</div>
+        <div class="floor-info-title" id="floor-title">1층 · 상가</div>
+        <div class="floor-info-desc" id="floor-desc">내용을 입력해주세요.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <img class="gallery-image" src="Pictures/Ruchea - 2.png" alt="루체아빌딩 건물 외관">
+  </section>
+
+  <footer>
+    <p>루체아빌딩 · 고양시</p>
+    <p>문의: 내용을 입력해주세요.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,274 @@
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f5f7;
+  --text: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --accent: #0071e3;
+  --line: #d2d2d7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Helvetica Neue", "Apple SD Gothic Neo", "Pretendard", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.05) 40%,
+      rgba(0, 0, 0, 0.55) 100%
+    ),
+    url("Pictures/Ruchea%20-%201.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  transform: translateY(-2vh);
+  animation: fadeIn 1.4s ease both;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.hero-subtitle {
+  margin-top: 14px;
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: -0.01em;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  animation: bounce 2.2s ease-in-out infinite;
+}
+
+.scroll-cue svg {
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-2vh);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+
+/* ---------- Section shared ---------- */
+
+section {
+  padding: 140px 24px;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-heading.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section-heading p {
+  margin-top: 16px;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Building diagram ---------- */
+
+.building-section {
+  background: var(--bg-alt);
+}
+
+.building-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.building {
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+.floor {
+  position: relative;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+.floor:last-child {
+  border-bottom: none;
+}
+
+.floor.basement {
+  background: #e8e8ed;
+  color: var(--text-secondary);
+}
+
+.floor:hover,
+.floor:focus-visible,
+.floor.active {
+  background: var(--text);
+  color: #fff;
+  transform: scale(1.03);
+  z-index: 1;
+}
+
+.floor.basement:hover,
+.floor.basement:focus-visible,
+.floor.basement.active {
+  background: #48484a;
+  color: #fff;
+}
+
+.floor-info {
+  min-height: 160px;
+  padding: 40px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.floor-info-label {
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.floor-info-title {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: opacity 0.25s ease;
+}
+
+.floor-info-desc {
+  margin-top: 14px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: opacity 0.25s ease;
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery-section {
+  padding: 0;
+}
+
+.gallery-image {
+  width: 100%;
+  display: block;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  background: var(--bg-alt);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 760px) {
+  .building-wrap {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  section {
+    padding: 96px 20px;
+  }
+
+  .floor {
+    height: 64px;
+    font-size: 0.95rem;
+  }
+}
