@@ -1,3 +1,67 @@
+const heroSlider = document.getElementById("hero-slider");
+const heroSlides = heroSlider.children;
+const heroDotsEl = document.getElementById("hero-dots");
+const heroPrevBtn = document.getElementById("hero-prev");
+const heroNextBtn = document.getElementById("hero-next");
+let heroIndex = 0;
+const heroDots = [];
+
+Array.from(heroSlides).forEach((_, i) => {
+  const dot = document.createElement("button");
+  dot.className = "hero-dot";
+  dot.setAttribute("aria-label", `${i + 1}번째 사진 보기`);
+  dot.addEventListener("click", () => {
+    goToHeroSlide(i);
+    resetHeroTimer();
+  });
+  heroDotsEl.appendChild(dot);
+  heroDots.push(dot);
+});
+
+function updateHero() {
+  const width = heroSlider.clientWidth;
+  heroSlider.style.transform = `translateX(-${heroIndex * width}px)`;
+  heroDots.forEach((dot, i) => dot.classList.toggle("active", i === heroIndex));
+}
+
+function goToHeroSlide(i) {
+  const count = heroSlides.length;
+  heroIndex = (i + count) % count;
+  updateHero();
+}
+
+function nextHeroSlide() {
+  goToHeroSlide(heroIndex + 1);
+}
+
+function prevHeroSlide() {
+  goToHeroSlide(heroIndex - 1);
+}
+
+let heroTimer = setInterval(nextHeroSlide, 5000);
+
+function resetHeroTimer() {
+  clearInterval(heroTimer);
+  heroTimer = setInterval(nextHeroSlide, 5000);
+}
+
+heroPrevBtn.addEventListener("click", () => {
+  prevHeroSlide();
+  resetHeroTimer();
+});
+
+heroNextBtn.addEventListener("click", () => {
+  nextHeroSlide();
+  resetHeroTimer();
+});
+
+document.querySelector(".hero").addEventListener("mouseenter", () => clearInterval(heroTimer));
+document.querySelector(".hero").addEventListener("mouseleave", resetHeroTimer);
+
+window.addEventListener("resize", updateHero);
+
+updateHero();
+
 const floorData = {
   f5: {
     label: "5층",
