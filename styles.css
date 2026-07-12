@@ -37,9 +37,7 @@ body {
   z-index: 100;
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  background: #000;
 }
 
 .nav-inner {
@@ -67,16 +65,16 @@ body {
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: #fff;
   font-size: 0.85rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.01em;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .nav-link:hover {
-  color: #fff;
+  opacity: 0.7;
 }
 
 /* ---------- Hero ---------- */
@@ -295,6 +293,89 @@ section {
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+}
+
+/* ---------- Overview layout ---------- */
+
+.overview-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.overview-info {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.overview-info .specs-grid {
+  max-width: none;
+  margin: 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.overview-info .specs-features {
+  margin: 0;
+  justify-content: flex-start;
+}
+
+.development-status {
+  padding: 28px 30px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.development-status h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.development-status ul {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+}
+
+.development-status li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.development-status li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.overview-map {
+  min-height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.overview-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+  display: block;
 }
 
 .spec-item {
@@ -538,6 +619,19 @@ footer {
 
   .specs-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .overview-map {
+    min-height: 320px;
+  }
+
+  .overview-map iframe {
+    min-height: 320px;
   }
 
   .building-wrap {
