@@ -377,7 +377,8 @@ section {
 }
 
 .form-field input,
-.form-field select {
+.form-field select,
+.form-field textarea {
   padding: 12px 14px;
   font-family: inherit;
   font-size: 1rem;
@@ -389,9 +390,22 @@ section {
   transition: border-color 0.2s ease;
 }
 
+.form-field textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
 .form-field input:focus,
-.form-field select:focus {
+.form-field select:focus,
+.form-field textarea:focus {
   border-color: var(--accent);
+}
+
+.char-count {
+  align-self: flex-end;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
 }
 
 .contact-submit {
@@ -413,18 +427,16 @@ section {
 }
 
 .contact-map {
-  min-height: 420px;
+  min-height: 620px;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
-.contact-map iframe {
+#naver-map {
   width: 100%;
   height: 100%;
-  min-height: 420px;
-  border: 0;
-  display: block;
+  min-height: 620px;
 }
 
 .spec-item {
@@ -680,11 +692,11 @@ footer {
   }
 
   .contact-map {
-    min-height: 320px;
+    min-height: 380px;
   }
 
-  .contact-map iframe {
-    min-height: 320px;
+  #naver-map {
+    min-height: 380px;
   }
 
   .building-wrap {

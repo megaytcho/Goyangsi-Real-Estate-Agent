@@ -155,17 +155,17 @@
           </select>
         </div>
 
+        <div class="form-field">
+          <label for="contact-message">문의 사항</label>
+          <textarea id="contact-message" name="message" rows="4" maxlength="250" placeholder="문의하실 내용을 입력해주세요"></textarea>
+          <div class="char-count"><span id="contact-message-count">0</span> / 250</div>
+        </div>
+
         <button type="button" class="contact-submit">문의하기</button>
       </div>
 
       <div class="contact-map">
-        <iframe
-          src="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B3%A0%EC%96%91%EC%8B%9C%20%EB%8D%95%EC%96%91%EA%B5%AC%20%EA%B3%A0%EC%96%91%EB%8C%80%EB%A1%9C%201780"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-          title="루체아빌딩 위치 지도 (네이버 지도)"
-        ></iframe>
+        <div id="naver-map" role="img" aria-label="루체아빌딩 위치 지도 (네이버 지도)"></div>
       </div>
     </div>
   </section>
@@ -175,6 +175,7 @@
     <p>문의: 내용을 입력해주세요.</p>
   </footer>
 
+  <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=cnui9vumvd"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -182,3 +182,31 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".section-heading").forEach((el) => observer.observe(el));
+
+const contactMessage = document.getElementById("contact-message");
+const contactMessageCount = document.getElementById("contact-message-count");
+
+contactMessage.addEventListener("input", () => {
+  contactMessageCount.textContent = contactMessage.value.length;
+});
+
+const naverMapEl = document.getElementById("naver-map");
+
+if (naverMapEl && window.naver && window.naver.maps) {
+  const buildingPosition = new naver.maps.LatLng(37.6444917, 126.8785433);
+
+  const map = new naver.maps.Map(naverMapEl, {
+    center: buildingPosition,
+    zoom: 17,
+    zoomControl: true,
+    zoomControlOptions: {
+      position: naver.maps.Position.TOP_RIGHT,
+    },
+  });
+
+  new naver.maps.Marker({
+    position: buildingPosition,
+    map,
+    title: "루체아빌딩",
+  });
+}
