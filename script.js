@@ -198,9 +198,11 @@ if (naverMapEl && window.naver && window.naver.maps) {
   const map = new naver.maps.Map(naverMapEl, {
     center: buildingPosition,
     zoom: 17,
-    zoomControl: true,
-    zoomControlOptions: {
-      position: naver.maps.Position.TOP_RIGHT,
+    zoomControl: false,
+    mapTypeControl: false,
+    scaleControl: true,
+    scaleControlOptions: {
+      position: naver.maps.Position.BOTTOM_LEFT,
     },
   });
 

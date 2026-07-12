@@ -343,25 +343,32 @@ section {
 
 .contact-section {
   background: var(--bg-alt);
+  padding: 100px 24px;
 }
 
 .contact-grid {
-  max-width: 1120px;
+  max-width: 1040px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  gap: 40px;
   align-items: stretch;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  padding: 40px;
+  gap: 18px;
+  padding: 32px;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .form-field {
@@ -427,16 +434,43 @@ section {
 }
 
 .contact-map {
-  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  background: #fff;
   border-radius: 18px;
-  overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.contact-map-heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.contact-map-canvas {
+  flex: 1;
+  min-height: 420px;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 #naver-map {
   width: 100%;
   height: 100%;
-  min-height: 620px;
+}
+
+.contact-map-link {
+  align-self: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-map-link:hover {
+  text-decoration: underline;
 }
 
 .spec-item {
@@ -664,6 +698,21 @@ footer {
   .nav-link {
     font-size: 0.8rem;
   }
+}
+
+@media (max-width: 430px) {
+  .nav-inner {
+    padding: 0 14px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-logo,
+  .nav-link {
+    font-size: 0.68rem;
+  }
 
   .hero-arrow {
     width: 38px;
@@ -684,19 +733,19 @@ footer {
 
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
 
   .contact-form {
-    padding: 28px;
+    padding: 24px;
   }
 
   .contact-map {
-    min-height: 380px;
+    padding: 24px;
   }
 
-  #naver-map {
-    min-height: 380px;
+  .contact-map-canvas {
+    min-height: 280px;
   }
 
   .building-wrap {
