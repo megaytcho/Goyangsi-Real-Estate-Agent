@@ -97,13 +97,13 @@ const floorData = {
     label: "1층",
     title: "1층 · 상가",
     rooms: [
-      { room: "101호", area: "54.82㎡ (16.6평)", deposit: "2,000만원", rent: "160만원" },
+      { room: "101호", area: "54.82㎡ (16.6평)", deposit: "2,000만원", rent: "160만원", link: "room-101.html" },
       {
         room: "103호",
         area: "176.66㎡ (53.5평)",
         deposit: "6,000만원",
         rent: "520만원",
-        note: "식당 설비 및 집기 구비 · 권리금 없음 (기존 감자탕 식당 운영, 업종 변경 가능)",
+        note: "현재 감자탕집 운영중",
       },
     ],
   },
@@ -129,8 +129,9 @@ function renderFloor(key) {
 
   if (data.rooms) {
     data.rooms.forEach((r) => {
-      const room = document.createElement("div");
-      room.className = "room";
+      const room = document.createElement(r.link ? "a" : "div");
+      room.className = r.link ? "room room-linked" : "room";
+      if (r.link) room.href = r.link;
       room.innerHTML = `
         <div class="room-head">
           <span class="room-number">${r.room}</span>

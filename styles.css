@@ -566,6 +566,34 @@ section {
   border-bottom: none;
 }
 
+.floor-preview {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  width: 180px;
+  transform: translateX(-50%) translateY(8px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 5;
+}
+
+.floor-preview img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.floor:hover .floor-preview,
+.floor:focus-visible .floor-preview {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 .floor.basement {
   background: #e8e8ed;
   color: var(--text-secondary);
@@ -643,6 +671,22 @@ section {
   letter-spacing: -0.01em;
 }
 
+.room-linked {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.room-linked:hover {
+  opacity: 0.7;
+}
+
+.room-linked:hover .room-number {
+  color: var(--accent);
+}
+
 .room-area {
   font-size: 0.95rem;
   color: var(--text-secondary);
@@ -687,6 +731,62 @@ footer {
   background: var(--bg-alt);
 }
 
+/* ---------- Room page ---------- */
+
+.room-page {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.room-page h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.room-page p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.room-back-link {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.room-back-link:hover {
+  text-decoration: underline;
+}
+
+.room-page-with-gallery {
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+.room-gallery {
+  width: 100%;
+  max-width: 900px;
+  margin: 4px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.room-gallery img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 760px) {
@@ -697,6 +797,14 @@ footer {
   .nav-logo,
   .nav-link {
     font-size: 0.8rem;
+  }
+
+  .room-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .room-gallery img {
+    height: 240px;
   }
 }
 
