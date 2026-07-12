@@ -14,6 +14,7 @@
       <div class="nav-links">
         <a href="#overview" class="nav-link">개요</a>
         <a href="#floor-guide" class="nav-link">층별안내</a>
+        <a href="#contact" class="nav-link">문의</a>
       </div>
     </div>
   </nav>
@@ -58,51 +59,37 @@
       <p>경기도 고양시 덕양구 고양대로 1780 (삼송동 348-4)</p>
     </div>
 
-    <div class="overview-grid">
-      <div class="overview-info">
-        <div class="specs-grid">
-          <div class="spec-item">
-            <div class="spec-value">2015<span class="spec-unit">년</span></div>
-            <div class="spec-label">준공일자</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-value">1,610.33<span class="spec-unit">㎡</span></div>
-            <div class="spec-label">연면적 · 487.12평</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-value">514.7<span class="spec-unit">㎡</span></div>
-            <div class="spec-label">대지면적</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-value">5<span class="spec-unit">층</span> · B1</div>
-            <div class="spec-label">지상 5층 · 지하 1층(주차장)</div>
-          </div>
-        </div>
-
-        <div class="specs-features">
-          <div class="feature-pill">엘리베이터</div>
-          <div class="feature-pill">전층 베란다</div>
-          <div class="feature-pill">1층 · 옥상 화단</div>
-        </div>
-
-        <div class="development-status">
-          <h3>주변 개발 현황</h3>
-          <ul>
-            <li>본 빌딩 앞 동고양 세무서 이전 예정(현재 교통영향평가중), 현재 한국환경공단 수도권서부환경본부 신청사 신축 공사중</li>
-            <li>창릉 3기 신도시 입주 예정, 관공서 추가 입주 계획, 본 빌딩 앞 창릉천, 8차선 대로변 교통, 주택 및 아파트 상권</li>
-          </ul>
-        </div>
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-value">2015<span class="spec-unit">년</span></div>
+        <div class="spec-label">준공일자</div>
       </div>
-
-      <div class="overview-map">
-        <iframe
-          src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84+%EA%B3%A0%EC%96%91%EC%8B%9C+%EB%8D%95%EC%96%91%EA%B5%AC+%EA%B3%A0%EC%96%91%EB%8C%80%EB%A1%9C+1780&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-          title="루체아빌딩 위치 지도"
-        ></iframe>
+      <div class="spec-item">
+        <div class="spec-value">1,610.33<span class="spec-unit">㎡</span></div>
+        <div class="spec-label">연면적 · 487.12평</div>
       </div>
+      <div class="spec-item">
+        <div class="spec-value">514.7<span class="spec-unit">㎡</span></div>
+        <div class="spec-label">대지면적</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-value">5<span class="spec-unit">층</span> · B1</div>
+        <div class="spec-label">지상 5층 · 지하 1층(주차장)</div>
+      </div>
+    </div>
+
+    <div class="specs-features">
+      <div class="feature-pill">엘리베이터</div>
+      <div class="feature-pill">전층 베란다</div>
+      <div class="feature-pill">1층 · 옥상 화단</div>
+    </div>
+
+    <div class="development-status">
+      <h3>주변 개발 현황</h3>
+      <ul>
+        <li>본 빌딩 앞 동고양 세무서 이전 예정(현재 교통영향평가중), 현재 한국환경공단 수도권서부환경본부 신청사 신축 공사중</li>
+        <li>창릉 3기 신도시 입주 예정, 관공서 추가 입주 계획, 본 빌딩 앞 창릉천, 8차선 대로변 교통, 주택 및 아파트 상권</li>
+      </ul>
     </div>
   </section>
 
@@ -132,6 +119,55 @@
     </div>
 
     <p class="lease-note">임대료는 부가세(VAT) 별도이며, 관리비는 임대료에 포함되지 않고 별도 정산됩니다. 계약 기간(1년 또는 2년)에 따라 최소 1개월~2개월의 렌트프리 협의가 가능합니다.</p>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="section-heading">
+      <h2>문의</h2>
+      <p>임대·임차 관련 문의를 남겨주시면 확인 후 연락드리겠습니다.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-form">
+        <div class="form-field">
+          <label for="contact-name">성함</label>
+          <input type="text" id="contact-name" name="name" placeholder="이름을 입력해주세요" autocomplete="name">
+        </div>
+
+        <div class="form-field">
+          <label for="contact-phone">연락처</label>
+          <input type="tel" id="contact-phone" name="phone" placeholder="010-1234-5678" autocomplete="tel">
+        </div>
+
+        <div class="form-field">
+          <label for="contact-unit">선호 호수</label>
+          <select id="contact-unit" name="unit">
+            <option value="">선택해주세요</option>
+            <option value="101">101호</option>
+            <option value="103">103호</option>
+            <option value="201">201호</option>
+            <option value="202">202호</option>
+            <option value="301">301호</option>
+            <option value="302">302호</option>
+            <option value="401">401호</option>
+            <option value="502">502호</option>
+            <option value="undecided">미정 · 상담 후 결정</option>
+          </select>
+        </div>
+
+        <button type="button" class="contact-submit">문의하기</button>
+      </div>
+
+      <div class="contact-map">
+        <iframe
+          src="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B3%A0%EC%96%91%EC%8B%9C%20%EB%8D%95%EC%96%91%EA%B5%AC%20%EA%B3%A0%EC%96%91%EB%8C%80%EB%A1%9C%201780"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          title="루체아빌딩 위치 지도 (네이버 지도)"
+        ></iframe>
+      </div>
+    </div>
   </section>
 
   <footer>
