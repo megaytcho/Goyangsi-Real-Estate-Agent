@@ -86,30 +86,30 @@ const floorData = {
     label: "5층",
     title: "5층",
     rooms: [
-      { room: "502호", area: "45.71㎡ (13.8평)", deposit: "2,000만원", rent: "100만원" },
+      { room: "502호", area: "45.71㎡ (13.8평)", deposit: "2,000만원", rent: "100만원", link: "room-502.html" },
     ],
   },
   f4: {
     label: "4층",
     title: "4층",
     rooms: [
-      { room: "401호", area: "99.84㎡ (30.2평)", deposit: "3,000만원", rent: "210만원" },
+      { room: "401호", area: "99.84㎡ (30.2평)", deposit: "3,000만원", rent: "210만원", link: "room-401.html" },
     ],
   },
   f3: {
     label: "3층",
     title: "3층",
     rooms: [
-      { room: "301호", area: "77.23㎡ (23.4평)", deposit: "3,000만원", rent: "160만원" },
-      { room: "302호", area: "65.45㎡ (19.8평)", deposit: "2,000만원", rent: "140만원" },
+      { room: "301호", area: "77.23㎡ (23.4평)", deposit: "3,000만원", rent: "160만원", link: "room-301.html" },
+      { room: "302호", area: "65.45㎡ (19.8평)", deposit: "2,000만원", rent: "140만원", link: "room-302.html" },
     ],
   },
   f2: {
     label: "2층",
     title: "2층",
     rooms: [
-      { room: "201호", area: "104.94㎡ (31.7평)", deposit: "3,000만원", rent: "210만원" },
-      { room: "202호", area: "50.51㎡ (15.3평)", deposit: "2,000만원", rent: "100만원" },
+      { room: "201호", area: "104.94㎡ (31.7평)", deposit: "3,000만원", rent: "210만원", link: "room-201.html" },
+      { room: "202호", area: "50.51㎡ (15.3평)", deposit: "2,000만원", rent: "100만원", link: "room-202.html" },
     ],
   },
   f1: {
