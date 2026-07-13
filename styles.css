@@ -295,15 +295,116 @@ section {
   overflow: hidden;
 }
 
+/* ---------- Surroundings ---------- */
+
+.surroundings-section {
+  background: var(--bg-alt);
+}
+
+.surroundings-grid {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.outside-slider-wrap {
+  position: relative;
+  min-height: 460px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.outside-slider {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  height: 100%;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.outside-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.outside-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.outside-arrow:hover {
+  background: rgba(0, 0, 0, 0.55);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.outside-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.outside-arrow-prev {
+  left: 14px;
+}
+
+.outside-arrow-next {
+  right: 14px;
+}
+
+.outside-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.outside-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.outside-dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
 /* ---------- Development status ---------- */
 
 .development-status {
-  max-width: 700px;
-  margin: 36px auto 0;
-  padding: 28px 30px;
-  background: var(--bg-alt);
-  border: 1px solid var(--line);
+  padding: 32px;
+  background: #fff;
   border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
 .development-status h3 {
@@ -567,31 +668,21 @@ section {
 }
 
 .floor-preview {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  width: 180px;
-  transform: translateX(-50%) translateY(8px);
+  display: none;
+  margin-bottom: 24px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 5;
+}
+
+.floor-preview.visible {
+  display: block;
 }
 
 .floor-preview img {
   display: block;
   width: 100%;
-  height: 120px;
+  height: 200px;
   object-fit: cover;
-}
-
-.floor:hover .floor-preview,
-.floor:focus-visible .floor-preview {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 
 .floor.basement {
@@ -837,6 +928,15 @@ footer {
 
   .specs-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .surroundings-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .outside-slider-wrap {
+    min-height: 320px;
   }
 
   .contact-grid {

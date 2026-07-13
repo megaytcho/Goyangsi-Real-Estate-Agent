@@ -1,66 +1,85 @@
-const heroSlider = document.getElementById("hero-slider");
-const heroSlides = heroSlider.children;
-const heroDotsEl = document.getElementById("hero-dots");
-const heroPrevBtn = document.getElementById("hero-prev");
-const heroNextBtn = document.getElementById("hero-next");
-let heroIndex = 0;
-const heroDots = [];
+function initSlider({ sliderId, dotsId, prevId, nextId, dotClass, intervalMs = 5000 }) {
+  const slider = document.getElementById(sliderId);
+  const slides = slider.children;
+  const dotsEl = document.getElementById(dotsId);
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+  const dots = [];
+  let index = 0;
 
-Array.from(heroSlides).forEach((_, i) => {
-  const dot = document.createElement("button");
-  dot.className = "hero-dot";
-  dot.setAttribute("aria-label", `${i + 1}번째 사진 보기`);
-  dot.addEventListener("click", () => {
-    goToHeroSlide(i);
-    resetHeroTimer();
+  Array.from(slides).forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = dotClass;
+    dot.setAttribute("aria-label", `${i + 1}번째 사진 보기`);
+    dot.addEventListener("click", () => {
+      goToSlide(i);
+      resetTimer();
+    });
+    dotsEl.appendChild(dot);
+    dots.push(dot);
   });
-  heroDotsEl.appendChild(dot);
-  heroDots.push(dot);
+
+  function update() {
+    const width = slider.clientWidth;
+    slider.style.transform = `translateX(-${index * width}px)`;
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+  }
+
+  function goToSlide(i) {
+    const count = slides.length;
+    index = (i + count) % count;
+    update();
+  }
+
+  function nextSlide() {
+    goToSlide(index + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(index - 1);
+  }
+
+  let timer = setInterval(nextSlide, intervalMs);
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(nextSlide, intervalMs);
+  }
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetTimer();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetTimer();
+  });
+
+  const container = slider.closest("section");
+  container.addEventListener("mouseenter", () => clearInterval(timer));
+  container.addEventListener("mouseleave", resetTimer);
+
+  window.addEventListener("resize", update);
+
+  update();
+}
+
+initSlider({
+  sliderId: "hero-slider",
+  dotsId: "hero-dots",
+  prevId: "hero-prev",
+  nextId: "hero-next",
+  dotClass: "hero-dot",
 });
 
-function updateHero() {
-  const width = heroSlider.clientWidth;
-  heroSlider.style.transform = `translateX(-${heroIndex * width}px)`;
-  heroDots.forEach((dot, i) => dot.classList.toggle("active", i === heroIndex));
-}
-
-function goToHeroSlide(i) {
-  const count = heroSlides.length;
-  heroIndex = (i + count) % count;
-  updateHero();
-}
-
-function nextHeroSlide() {
-  goToHeroSlide(heroIndex + 1);
-}
-
-function prevHeroSlide() {
-  goToHeroSlide(heroIndex - 1);
-}
-
-let heroTimer = setInterval(nextHeroSlide, 5000);
-
-function resetHeroTimer() {
-  clearInterval(heroTimer);
-  heroTimer = setInterval(nextHeroSlide, 5000);
-}
-
-heroPrevBtn.addEventListener("click", () => {
-  prevHeroSlide();
-  resetHeroTimer();
+initSlider({
+  sliderId: "outside-slider",
+  dotsId: "outside-dots",
+  prevId: "outside-prev",
+  nextId: "outside-next",
+  dotClass: "outside-dot",
 });
-
-heroNextBtn.addEventListener("click", () => {
-  nextHeroSlide();
-  resetHeroTimer();
-});
-
-document.querySelector(".hero").addEventListener("mouseenter", () => clearInterval(heroTimer));
-document.querySelector(".hero").addEventListener("mouseleave", resetHeroTimer);
-
-window.addEventListener("resize", updateHero);
-
-updateHero();
 
 const floorData = {
   f5: {
@@ -96,6 +115,7 @@ const floorData = {
   f1: {
     label: "1층",
     title: "1층 · 상가",
+    image: "Pictures/루체아%20빌딩%20101호%20-%201.jpeg",
     rooms: [
       { room: "101호", area: "54.82㎡ (16.6평)", deposit: "2,000만원", rent: "160만원", link: "room-101.html" },
       {
@@ -119,6 +139,8 @@ const label = document.getElementById("floor-label");
 const title = document.getElementById("floor-title");
 const roomsEl = document.getElementById("floor-rooms");
 const content = document.getElementById("floor-info-content");
+const floorPreview = document.getElementById("floor-preview");
+const floorPreviewImg = document.getElementById("floor-preview-img");
 
 function renderFloor(key) {
   const data = floorData[key];
@@ -126,6 +148,14 @@ function renderFloor(key) {
   label.textContent = data.label;
   title.textContent = data.title;
   roomsEl.innerHTML = "";
+
+  if (data.image) {
+    floorPreviewImg.src = data.image;
+    floorPreviewImg.alt = `${data.label} 사진`;
+    floorPreview.classList.add("visible");
+  } else {
+    floorPreview.classList.remove("visible");
+  }
 
   if (data.rooms) {
     data.rooms.forEach((r) => {

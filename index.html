@@ -13,6 +13,7 @@
       <a href="#top" class="nav-logo">루체아 빌딩</a>
       <div class="nav-links">
         <a href="#overview" class="nav-link">개요</a>
+        <a href="#surroundings" class="nav-link">주변 환경</a>
         <a href="#floor-guide" class="nav-link">층별안내</a>
         <a href="#contact" class="nav-link">문의 · 찾아오시는 길</a>
       </div>
@@ -25,6 +26,7 @@
       <div class="hero-slide" style="background-image:url('Pictures/Ruchea%20-%202.jpeg')"></div>
       <div class="hero-slide" style="background-image:url('Pictures/Ruchea%20-%203.jpeg')"></div>
       <div class="hero-slide" style="background-image:url('Pictures/Ruchea%20-%204.jpeg')"></div>
+      <div class="hero-slide" style="background-image:url('Pictures/Ruchea%20-%205.jpeg')"></div>
     </div>
     <div class="hero-overlay"></div>
 
@@ -83,13 +85,51 @@
       <div class="feature-pill">전층 베란다</div>
       <div class="feature-pill">1층 · 옥상 화단</div>
     </div>
+  </section>
 
-    <div class="development-status">
-      <h3>주변 개발 현황</h3>
-      <ul>
-        <li>본 빌딩 앞 동고양 세무서 이전 예정(현재 교통영향평가중), 현재 한국환경공단 수도권서부환경본부 신청사 신축 공사중</li>
-        <li>창릉 3기 신도시 입주 예정, 관공서 추가 입주 계획, 본 빌딩 앞 창릉천, 8차선 대로변 교통, 주택 및 아파트 상권</li>
-      </ul>
+  <section class="surroundings-section" id="surroundings">
+    <div class="section-heading">
+      <h2>주변 환경</h2>
+      <p>루체아빌딩 주변 환경과 개발 현황을 확인해보세요.</p>
+    </div>
+
+    <div class="surroundings-grid">
+      <div class="outside-slider-wrap">
+        <div class="outside-slider" id="outside-slider">
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%201.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%202.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%203.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%204.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%205.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%206.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%207.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%208.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%209.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%2010.jpeg')"></div>
+          <div class="outside-slide" style="background-image:url('Pictures/Ruchea%20Outside%20-%2011.jpeg')"></div>
+        </div>
+
+        <button class="outside-arrow outside-arrow-prev" id="outside-prev" aria-label="이전 사진">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <button class="outside-arrow outside-arrow-next" id="outside-next" aria-label="다음 사진">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+
+        <div class="outside-dots" id="outside-dots"></div>
+      </div>
+
+      <div class="development-status">
+        <h3>주변 개발 현황</h3>
+        <ul>
+          <li>본 빌딩 앞 동고양 세무서 이전 예정(현재 교통영향평가중), 현재 한국환경공단 수도권서부환경본부 신청사 신축 공사중</li>
+          <li>창릉 3기 신도시 입주 예정, 관공서 추가 입주 계획, 본 빌딩 앞 창릉천, 8차선 대로변 교통, 주택 및 아파트 상권</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -105,16 +145,14 @@
         <div class="floor" tabindex="0" data-floor="f4">4F</div>
         <div class="floor" tabindex="0" data-floor="f3">3F</div>
         <div class="floor" tabindex="0" data-floor="f2">2F</div>
-        <div class="floor" tabindex="0" data-floor="f1">
-          1F
-          <div class="floor-preview">
-            <img src="Pictures/루체아%20빌딩%20101호%20-%201.jpeg" alt="101호 사진">
-          </div>
-        </div>
+        <div class="floor" tabindex="0" data-floor="f1">1F</div>
         <div class="floor basement" tabindex="0" data-floor="b1">B1</div>
       </div>
 
       <div class="floor-info">
+        <div class="floor-preview" id="floor-preview">
+          <img id="floor-preview-img" src="" alt="">
+        </div>
         <div class="floor-info-content" id="floor-info-content">
           <div class="floor-info-label" id="floor-label">1층</div>
           <div class="floor-info-title" id="floor-title">1층 · 상가</div>
