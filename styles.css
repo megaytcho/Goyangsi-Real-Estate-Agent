@@ -636,7 +636,7 @@ section {
   display: grid;
   grid-template-columns: minmax(220px, 340px) 1fr;
   gap: 64px;
-  align-items: center;
+  align-items: start;
 }
 
 .building {
