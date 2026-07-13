@@ -130,7 +130,9 @@ const floorData = {
   b1: {
     label: "지하 1층",
     title: "지하 1층 · 주차장",
+    image: "Pictures/Ruchea%20B1%20-%201.jpeg",
     desc: "입주 세대를 위한 지하 주차장입니다.",
+    link: "room-b1.html",
   },
 };
 
@@ -176,8 +178,9 @@ function renderFloor(key) {
       roomsEl.appendChild(room);
     });
   } else if (data.desc) {
-    const empty = document.createElement("div");
-    empty.className = "room-empty";
+    const empty = document.createElement(data.link ? "a" : "div");
+    empty.className = data.link ? "room-empty room-linked" : "room-empty";
+    if (data.link) empty.href = data.link;
     empty.textContent = data.desc;
     roomsEl.appendChild(empty);
   }
