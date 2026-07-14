@@ -224,6 +224,31 @@ contactMessage.addEventListener("input", () => {
   contactMessageCount.textContent = contactMessage.value.length;
 });
 
+const CONTACT_PHONE_NUMBER = "01042611310";
+
+const contactSubmitBtn = document.getElementById("contact-submit");
+const contactNameInput = document.getElementById("contact-name");
+const contactPhoneInput = document.getElementById("contact-phone");
+const contactUnitSelect = document.getElementById("contact-unit");
+
+contactSubmitBtn.addEventListener("click", () => {
+  const name = contactNameInput.value.trim();
+  const phone = contactPhoneInput.value.trim();
+  const unit = contactUnitSelect.options[contactUnitSelect.selectedIndex].text;
+  const message = contactMessage.value.trim();
+
+  if (!name || !phone) {
+    alert("성함과 연락처를 입력해주세요.");
+    return;
+  }
+
+  const body = encodeURIComponent(
+    `[루체아빌딩 문의]\n성함: ${name}\n연락처: ${phone}\n선호 호수: ${unit}\n문의 사항: ${message || "없음"}`
+  );
+
+  window.location.href = `sms:${CONTACT_PHONE_NUMBER}?body=${body}`;
+});
+
 const naverMapEl = document.getElementById("naver-map");
 
 if (naverMapEl && window.naver && window.naver.maps) {
