@@ -52,7 +52,7 @@ body {
 
 .nav-logo {
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -66,7 +66,7 @@ body {
 
 .nav-link {
   color: #fff;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -214,7 +214,7 @@ body {
   align-items: center;
   gap: 6px;
   color: rgba(255, 255, 255, 0.85);
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   animation: bounce 2.2s ease-in-out infinite;
 }
 
@@ -273,7 +273,7 @@ section {
 
 .section-heading p {
   margin-top: 16px;
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   color: var(--text-secondary);
 }
 
@@ -408,7 +408,7 @@ section {
 }
 
 .development-status h3 {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -424,7 +424,7 @@ section {
 .development-status li {
   position: relative;
   padding-left: 18px;
-  font-size: 0.92rem;
+  font-size: 1.17rem;
   line-height: 1.7;
   color: var(--text-secondary);
 }
@@ -467,7 +467,7 @@ section {
 }
 
 .contact-form-heading {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -479,9 +479,13 @@ section {
 }
 
 .form-field label {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-secondary);
+}
+
+.form-field label[for="contact-unit"] {
+  font-size: 0.85rem;
 }
 
 .form-field input,
@@ -489,7 +493,7 @@ section {
 .form-field textarea {
   padding: 12px 14px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--text);
   background: #fff;
   border: 1px solid var(--line);
@@ -512,7 +516,7 @@ section {
 
 .char-count {
   align-self: flex-end;
-  font-size: 0.78rem;
+  font-size: 1.03rem;
   color: var(--text-secondary);
 }
 
@@ -520,7 +524,7 @@ section {
   margin-top: 8px;
   padding: 14px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #fff;
   background: var(--text);
@@ -545,7 +549,7 @@ section {
 }
 
 .contact-map-heading {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -564,7 +568,7 @@ section {
 
 .contact-map-link {
   align-self: center;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: var(--accent);
   text-decoration: none;
@@ -600,7 +604,7 @@ section {
 
 .spec-label {
   margin-top: 12px;
-  font-size: 0.82rem;
+  font-size: 1.07rem;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
 }
@@ -619,7 +623,7 @@ section {
   border-radius: 999px;
   background: var(--bg-alt);
   border: 1px solid var(--line);
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 500;
   color: var(--text);
 }
@@ -655,7 +659,7 @@ section {
   justify-content: center;
   background: #ffffff;
   color: var(--text);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   cursor: pointer;
@@ -701,7 +705,7 @@ section {
 }
 
 .floor-info-label {
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   color: var(--accent);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -822,7 +826,7 @@ section {
 }
 
 .room-number {
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -844,7 +848,7 @@ section {
 }
 
 .room-area {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
 }
 
@@ -852,13 +856,13 @@ section {
   margin-top: 8px;
   display: flex;
   gap: 20px;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--text);
 }
 
 .room-note {
   margin-top: 10px;
-  font-size: 0.88rem;
+  font-size: 1.13rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -867,7 +871,7 @@ section {
   max-width: 640px;
   margin: 48px auto 0;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.7;
 }
@@ -878,7 +882,7 @@ footer {
   padding: 60px 24px;
   text-align: center;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   background: var(--bg-alt);
 }
 
@@ -901,20 +905,20 @@ footer {
 }
 
 .room-page p {
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   color: var(--text-secondary);
 }
 
 .room-page-terms {
   margin-top: -8px;
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--text);
 }
 
 .room-back-link {
   color: var(--accent);
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-decoration: none;
 }
@@ -961,7 +965,7 @@ footer {
 
   .nav-logo,
   .nav-link {
-    font-size: 0.8rem;
+    font-size: 1.05rem;
   }
 
   .room-gallery {
@@ -984,7 +988,7 @@ footer {
 
   .nav-logo,
   .nav-link {
-    font-size: 0.68rem;
+    font-size: 0.93rem;
   }
 
   .hero-arrow {
@@ -1041,6 +1045,6 @@ footer {
 
   .floor {
     height: 64px;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
   }
 }
