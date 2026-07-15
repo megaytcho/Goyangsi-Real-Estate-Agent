@@ -1,9 +1,5 @@
-function initSlider({ sliderId, dotsId, prevId, nextId, dotClass, intervalMs = 5000 }) {
-  const slider = document.getElementById(sliderId);
+function initSlider({ slider, dotsEl, prevBtn, nextBtn, dotClass, hoverContainer, intervalMs = 5000 }) {
   const slides = slider.children;
-  const dotsEl = document.getElementById(dotsId);
-  const prevBtn = document.getElementById(prevId);
-  const nextBtn = document.getElementById(nextId);
   const dots = [];
   let index = 0;
 
@@ -56,29 +52,38 @@ function initSlider({ sliderId, dotsId, prevId, nextId, dotClass, intervalMs = 5
     resetTimer();
   });
 
-  const container = slider.closest("section");
+  const container = hoverContainer || slider.parentElement;
   container.addEventListener("mouseenter", () => clearInterval(timer));
   container.addEventListener("mouseleave", resetTimer);
 
   window.addEventListener("resize", update);
 
   update();
+
+  return {
+    destroy() {
+      clearInterval(timer);
+      window.removeEventListener("resize", update);
+    },
+  };
 }
 
 initSlider({
-  sliderId: "hero-slider",
-  dotsId: "hero-dots",
-  prevId: "hero-prev",
-  nextId: "hero-next",
+  slider: document.getElementById("hero-slider"),
+  dotsEl: document.getElementById("hero-dots"),
+  prevBtn: document.getElementById("hero-prev"),
+  nextBtn: document.getElementById("hero-next"),
   dotClass: "hero-dot",
+  hoverContainer: document.querySelector(".hero"),
 });
 
 initSlider({
-  sliderId: "outside-slider",
-  dotsId: "outside-dots",
-  prevId: "outside-prev",
-  nextId: "outside-next",
+  slider: document.getElementById("outside-slider"),
+  dotsEl: document.getElementById("outside-dots"),
+  prevBtn: document.getElementById("outside-prev"),
+  nextBtn: document.getElementById("outside-next"),
   dotClass: "outside-dot",
+  hoverContainer: document.querySelector(".outside-slider-wrap"),
 });
 
 const floorData = {
@@ -86,38 +91,124 @@ const floorData = {
     label: "5층",
     title: "5층",
     rooms: [
-      { room: "502호", area: "45.71㎡ (13.8평)", deposit: "2,000만원", rent: "100만원", link: "room-502.html" },
+      {
+        room: "502호",
+        area: "45.71㎡ (13.8평)",
+        deposit: "2,000만원",
+        rent: "100만원",
+        link: "room-502.html",
+        images: ["Pictures/Ruchea%20502호/KakaoTalk_Image_2026-07-15-12-00-15_015.jpeg"],
+      },
     ],
   },
   f4: {
     label: "4층",
     title: "4층",
     rooms: [
-      { room: "401호", area: "99.84㎡ (30.2평)", deposit: "3,000만원", rent: "210만원", link: "room-401.html" },
+      {
+        room: "401호",
+        area: "99.84㎡ (30.2평)",
+        deposit: "3,000만원",
+        rent: "210만원",
+        link: "room-401.html",
+        images: [
+          "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-14_012.jpeg",
+          "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-14_013.jpeg",
+          "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-15_014.jpeg",
+        ],
+      },
     ],
   },
   f3: {
     label: "3층",
     title: "3층",
     rooms: [
-      { room: "301호", area: "77.23㎡ (23.4평)", deposit: "3,000만원", rent: "160만원", link: "room-301.html" },
-      { room: "302호", area: "65.45㎡ (19.8평)", deposit: "2,000만원", rent: "140만원", link: "room-302.html" },
+      {
+        room: "301호",
+        area: "77.23㎡ (23.4평)",
+        deposit: "3,000만원",
+        rent: "160만원",
+        link: "room-301.html",
+        images: [
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%201.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%202.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%203.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%204.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%205.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%206.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%207.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%208.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%209.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301%20-%2010.jpeg",
+          "Pictures/Ruchea%20301호/Ruchea%20301호%20-%201.jpeg",
+        ],
+      },
+      {
+        room: "302호",
+        area: "65.45㎡ (19.8평)",
+        deposit: "2,000만원",
+        rent: "140만원",
+        link: "room-302.html",
+        images: [
+          "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-12_008.jpeg",
+          "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-12_009.jpeg",
+          "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-13_010.jpeg",
+          "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-13_011.jpeg",
+        ],
+      },
     ],
   },
   f2: {
     label: "2층",
     title: "2층",
     rooms: [
-      { room: "201호", area: "104.94㎡ (31.7평)", deposit: "3,000만원", rent: "210만원", link: "room-201.html" },
-      { room: "202호", area: "50.51㎡ (15.3평)", deposit: "2,000만원", rent: "100만원", link: "room-202.html" },
+      {
+        room: "201호",
+        area: "104.94㎡ (31.7평)",
+        deposit: "3,000만원",
+        rent: "210만원",
+        link: "room-201.html",
+        images: [
+          "Pictures/Ruchea%20201호/Ruchea%20201%20-%201.jpeg",
+          "Pictures/Ruchea%20201호/Ruchea%20201%20-%202.jpeg",
+          "Pictures/Ruchea%20201호/Ruchea%20201%20-%203.jpeg",
+          "Pictures/Ruchea%20201호/Ruchea%20201%20-%204.jpeg",
+          "Pictures/Ruchea%20201호/Ruchea%20201%20-%205.jpeg",
+        ],
+      },
+      {
+        room: "202호",
+        area: "50.51㎡ (15.3평)",
+        deposit: "2,000만원",
+        rent: "100만원",
+        link: "room-202.html",
+        images: [
+          "Pictures/Ruchea%20202호/Ruchea%20202%20-%201.jpeg",
+          "Pictures/Ruchea%20202호/Ruchea%20202%20-%202.jpeg",
+          "Pictures/Ruchea%20202호/Ruchea%20202호%20-%202.jpeg",
+        ],
+      },
     ],
   },
   f1: {
     label: "1층",
     title: "1층 · 상가",
-    image: "Pictures/루체아%20빌딩%20101호%20-%201.jpeg",
     rooms: [
-      { room: "101호", area: "54.82㎡ (16.6평)", deposit: "2,000만원", rent: "160만원", link: "room-101.html" },
+      {
+        room: "101호",
+        area: "54.82㎡ (16.6평)",
+        deposit: "2,000만원",
+        rent: "160만원",
+        link: "room-101.html",
+        images: [
+          "Pictures/Ruchea%20101호/루체아%20빌딩%20101호%20-%201.jpeg",
+          "Pictures/Ruchea%20101호/루체아%20빌딩%20101호%20-%202.jpeg",
+          "Pictures/Ruchea%20101호/Ruchea%20101%20-%203.jpeg",
+          "Pictures/Ruchea%20101호/Ruchea%20101%20-%204.jpeg",
+          "Pictures/Ruchea%20101호/Ruchea%20101%20-%205.jpeg",
+          "Pictures/Ruchea%20101호/Ruchea%20101%20-%206.jpeg",
+        ],
+      },
       {
         room: "103호",
         area: "176.66㎡ (53.5평)",
@@ -130,9 +221,14 @@ const floorData = {
   b1: {
     label: "지하 1층",
     title: "지하 1층 · 주차장",
-    image: "Pictures/Ruchea%20B1%20-%201.jpeg",
-    desc: "입주 세대를 위한 지하 주차장입니다.",
-    link: "room-b1.html",
+    rooms: [
+      {
+        room: "주차장",
+        desc: "입주 세대를 위한 지하 주차장입니다.",
+        link: "room-b1.html",
+        images: ["Pictures/Ruchea%20Basement/Ruchea%20B1%20-%201.jpeg"],
+      },
+    ],
   },
 };
 
@@ -141,8 +237,8 @@ const label = document.getElementById("floor-label");
 const title = document.getElementById("floor-title");
 const roomsEl = document.getElementById("floor-rooms");
 const content = document.getElementById("floor-info-content");
-const floorPreview = document.getElementById("floor-preview");
-const floorPreviewImg = document.getElementById("floor-preview-img");
+
+let activeRoomSliders = [];
 
 function renderFloor(key) {
   const data = floorData[key];
@@ -151,39 +247,62 @@ function renderFloor(key) {
   title.textContent = data.title;
   roomsEl.innerHTML = "";
 
-  if (data.image) {
-    floorPreviewImg.src = data.image;
-    floorPreviewImg.alt = `${data.label} 사진`;
-    floorPreview.classList.add("visible");
-  } else {
-    floorPreview.classList.remove("visible");
-  }
+  activeRoomSliders.forEach((s) => s.destroy());
+  activeRoomSliders = [];
 
-  if (data.rooms) {
-    data.rooms.forEach((r) => {
-      const room = document.createElement(r.link ? "a" : "div");
-      room.className = r.link ? "room room-linked" : "room";
-      if (r.link) room.href = r.link;
-      room.innerHTML = `
+  data.rooms.forEach((r) => {
+    const hasImages = r.images && r.images.length > 0;
+    const hasMultiple = hasImages && r.images.length > 1;
+    const cardTag = r.link ? "a" : "div";
+
+    const block = document.createElement("div");
+    block.className = "room-block";
+    block.innerHTML = `
+      ${hasImages ? `
+      <div class="room-slider-wrap">
+        <div class="room-slider">
+          ${r.images.map((src) => `<div class="room-slide" style="background-image:url('${src}')"></div>`).join("")}
+        </div>
+        ${hasMultiple ? `
+        <button class="room-slider-arrow room-slider-arrow-prev" aria-label="이전 사진">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="room-slider-arrow room-slider-arrow-next" aria-label="다음 사진">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="room-slider-dots"></div>` : ""}
+      </div>` : ""}
+      <${cardTag} class="${r.link ? "room room-linked" : "room"}" ${r.link ? `href="${r.link}"` : ""}>
         <div class="room-head">
           <span class="room-number">${r.room}</span>
-          <span class="room-area">${r.area}</span>
+          ${r.area ? `<span class="room-area">${r.area}</span>` : ""}
         </div>
+        ${r.deposit ? `
         <div class="room-terms">
           <span>보증금 ${r.deposit}</span>
           <span>월세 ${r.rent}</span>
-        </div>
+        </div>` : ""}
         ${r.note ? `<div class="room-note">${r.note}</div>` : ""}
-      `;
-      roomsEl.appendChild(room);
-    });
-  } else if (data.desc) {
-    const empty = document.createElement(data.link ? "a" : "div");
-    empty.className = data.link ? "room-empty room-linked" : "room-empty";
-    if (data.link) empty.href = data.link;
-    empty.textContent = data.desc;
-    roomsEl.appendChild(empty);
-  }
+        ${r.desc ? `<div class="room-note">${r.desc}</div>` : ""}
+      </${cardTag}>
+    `;
+    roomsEl.appendChild(block);
+
+    if (hasMultiple) {
+      const wrap = block.querySelector(".room-slider-wrap");
+      activeRoomSliders.push(
+        initSlider({
+          slider: wrap.querySelector(".room-slider"),
+          dotsEl: wrap.querySelector(".room-slider-dots"),
+          prevBtn: wrap.querySelector(".room-slider-arrow-prev"),
+          nextBtn: wrap.querySelector(".room-slider-arrow-next"),
+          dotClass: "room-slider-dot",
+          hoverContainer: wrap,
+          intervalMs: 4000,
+        })
+      );
+    }
+  });
 }
 
 function showFloor(floorEl) {
