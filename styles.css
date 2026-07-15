@@ -905,6 +905,13 @@ footer {
   color: var(--text-secondary);
 }
 
+.room-page-terms {
+  margin-top: -8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .room-back-link {
   color: var(--accent);
   font-size: 0.95rem;
