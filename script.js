@@ -355,7 +355,7 @@ contactMessage.addEventListener("input", () => {
   contactMessageCount.textContent = contactMessage.value.length;
 });
 
-const CONTACT_PHONE_NUMBER = "01042611310";
+const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/gJgCUKEi";
 
 const contactSubmitBtn = document.getElementById("contact-submit");
 const contactNameInput = document.getElementById("contact-name");
@@ -373,11 +373,18 @@ contactSubmitBtn.addEventListener("click", () => {
     return;
   }
 
-  const body = encodeURIComponent(
-    `[루체아빌딩 문의]\n성함: ${name}\n연락처: ${phone}\n선호 호수: ${unit}\n문의 사항: ${message || "없음"}`
-  );
+  const text = `[루체아빌딩 문의]\n성함: ${name}\n연락처: ${phone}\n선호 호수: ${unit}\n문의 사항: ${message || "없음"}`;
 
-  window.location.href = `sms:${CONTACT_PHONE_NUMBER}?body=${body}`;
+  window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer");
+
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      alert("문의 내용이 복사되었습니다. 열리는 카카오톡 채팅방에 붙여넣기 해주세요.");
+    })
+    .catch(() => {
+      alert("문의 내용을 자동으로 복사하지 못했습니다. 카카오톡 채팅방에 직접 입력해주세요.");
+    });
 });
 
 const naverMapEl = document.getElementById("naver-map");
