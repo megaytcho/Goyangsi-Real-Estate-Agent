@@ -92,12 +92,18 @@ const floorData = {
     title: "5층",
     rooms: [
       {
+        room: "501호",
+      },
+      {
         room: "502호",
         area: "45.71㎡ (13.8평)",
         deposit: "2,000만원",
         rent: "100만원",
         link: "room-502.html",
         images: ["Pictures/Ruchea%20502호/KakaoTalk_Image_2026-07-15-12-00-15_015.jpeg"],
+      },
+      {
+        room: "503호",
       },
     ],
   },
@@ -116,6 +122,9 @@ const floorData = {
           "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-14_013.jpeg",
           "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-15_014.jpeg",
         ],
+      },
+      {
+        room: "402호",
       },
     ],
   },
@@ -187,6 +196,9 @@ const floorData = {
           "Pictures/Ruchea%20202호/Ruchea%20202%20-%202.jpeg",
           "Pictures/Ruchea%20202호/Ruchea%20202호%20-%202.jpeg",
         ],
+      },
+      {
+        room: "203호",
       },
     ],
   },
