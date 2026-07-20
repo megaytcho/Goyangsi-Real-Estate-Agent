@@ -100,7 +100,10 @@ const floorData = {
         deposit: "2,000만원",
         rent: "100만원",
         link: "room-502.html",
-        images: ["Pictures/Ruchea%20502호/KakaoTalk_Image_2026-07-15-12-00-15_015.jpeg"],
+        images: [
+          "Pictures/Ruchea%20502호/KakaoTalk_Image_2026-07-15-12-00-15_015.jpeg",
+          "Pictures/Ruchea%20502호/KakaoTalk_Photo_2026-07-20-13-40-16%20004.jpeg",
+        ],
       },
       {
         room: "503호",
@@ -121,6 +124,7 @@ const floorData = {
           "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-14_012.jpeg",
           "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-14_013.jpeg",
           "Pictures/Ruchea%20401호/KakaoTalk_Image_2026-07-15-12-00-15_014.jpeg",
+          "Pictures/Ruchea%20401호/KakaoTalk_Photo_2026-07-20-13-40-16%20003.jpeg",
         ],
       },
       {
@@ -150,6 +154,7 @@ const floorData = {
           "Pictures/Ruchea%20301호/Ruchea%20301%20-%209.jpeg",
           "Pictures/Ruchea%20301호/Ruchea%20301%20-%2010.jpeg",
           "Pictures/Ruchea%20301호/Ruchea%20301호%20-%201.jpeg",
+          "Pictures/Ruchea%20301호/KakaoTalk_Photo_2026-07-20-13-40-15%20001.jpeg",
         ],
       },
       {
@@ -163,6 +168,8 @@ const floorData = {
           "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-12_009.jpeg",
           "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-13_010.jpeg",
           "Pictures/Ruchea%20302호/KakaoTalk_Image_2026-07-15-12-00-13_011.jpeg",
+          "Pictures/Ruchea%20302호/KakaoTalk_Photo_2026-07-20-13-40-15%20001%20copy.jpeg",
+          "Pictures/Ruchea%20302호/KakaoTalk_Photo_2026-07-20-13-40-15%20002.jpeg",
         ],
       },
     ],
@@ -183,6 +190,7 @@ const floorData = {
           "Pictures/Ruchea%20201호/Ruchea%20201%20-%203.jpeg",
           "Pictures/Ruchea%20201호/Ruchea%20201%20-%204.jpeg",
           "Pictures/Ruchea%20201호/Ruchea%20201%20-%205.jpeg",
+          "Pictures/Ruchea%20201호/KakaoTalk_Photo_2026-07-20-13-40-15%20001%20copy.jpeg",
         ],
       },
       {
