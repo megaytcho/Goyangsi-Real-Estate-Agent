@@ -50,6 +50,22 @@ body {
   justify-content: space-between;
 }
 
+.nav-home {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 24px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.nav-home:hover {
+  opacity: 1;
+}
+
 .nav-logo {
   color: #fff;
   font-size: 1.2rem;
@@ -1097,5 +1113,160 @@ footer {
   .floor {
     height: 64px;
     font-size: 1.2rem;
+  }
+}
+
+/* ---------- Home (Composition) page ---------- */
+
+.home-body {
+  background: #faf9f6;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home-nav {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  background: #faf9f6;
+  border-bottom: 1px solid #e4e2dc;
+}
+
+.home-nav-inner {
+  width: 100%;
+  padding: 0 48px;
+}
+
+.home-nav-home {
+  font-family: "Noto Serif KR", serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.composition-grid {
+  height: calc(100vh - 89px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.composition-panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 88px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.composition-panel:not(:last-child) {
+  border-right: 1px solid #e4e2dc;
+}
+
+.composition-panel-photo {
+  background-size: cover;
+  background-position: center;
+}
+
+.composition-panel-photo .composition-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.25));
+  transition: background 0.35s ease;
+}
+
+.composition-panel-photo:hover .composition-panel-overlay {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.35));
+}
+
+.composition-panel-content {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+}
+
+.composition-panel-photo .panel-label,
+.composition-panel-photo .panel-desc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.composition-panel-photo .panel-title {
+  color: #fff;
+}
+
+.composition-panel-photo .panel-link {
+  color: #fff;
+}
+
+.composition-panel-empty {
+  cursor: default;
+}
+
+.panel-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.panel-title {
+  font-family: "Playfair Display", "Noto Serif KR", serif;
+  font-size: 4.5rem;
+  line-height: 1.05;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.panel-title-muted {
+  color: #c2c0b8;
+}
+
+.panel-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.panel-desc-muted {
+  color: #c2c0b8;
+}
+
+.panel-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .composition-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: calc(100vh - 89px);
+  }
+
+  .home-body {
+    height: auto;
+    overflow: visible;
+  }
+
+  .composition-panel {
+    padding: 64px 32px;
+    min-height: 60vh;
+  }
+
+  .composition-panel:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #e4e2dc;
+  }
+
+  .panel-title {
+    font-size: 3rem;
   }
 }
