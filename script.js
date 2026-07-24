@@ -93,9 +93,12 @@ const floorData = {
     rooms: [
       {
         room: "501호",
+        saleArea: "86.19㎡ (26.07평)",
+        area: "49.29㎡ (14.9평)",
       },
       {
         room: "502호",
+        saleArea: "79.93㎡ (24.18평)",
         area: "45.71㎡ (13.8평)",
         deposit: "2,000만원",
         rent: "100만원",
@@ -107,6 +110,8 @@ const floorData = {
       },
       {
         room: "503호",
+        saleArea: "130.81㎡ (39.57평)",
+        area: "74.81㎡ (22.6평)",
       },
     ],
   },
@@ -116,6 +121,7 @@ const floorData = {
     rooms: [
       {
         room: "401호",
+        saleArea: "174.59㎡ (52.81평)",
         area: "99.84㎡ (30.2평)",
         deposit: "3,000만원",
         rent: "210만원",
@@ -129,6 +135,8 @@ const floorData = {
       },
       {
         room: "402호",
+        saleArea: "130.81㎡ (39.57평)",
+        area: "74.81㎡ (22.6평)",
       },
     ],
   },
@@ -138,6 +146,7 @@ const floorData = {
     rooms: [
       {
         room: "301호",
+        saleArea: "135.05㎡ (40.85평)",
         area: "77.23㎡ (23.4평)",
         deposit: "3,000만원",
         rent: "160만원",
@@ -159,6 +168,7 @@ const floorData = {
       },
       {
         room: "302호",
+        saleArea: "114.45㎡ (34.62평)",
         area: "65.45㎡ (19.8평)",
         deposit: "2,000만원",
         rent: "140만원",
@@ -180,6 +190,7 @@ const floorData = {
     rooms: [
       {
         room: "201호",
+        saleArea: "183.50㎡ (55.51평)",
         area: "104.94㎡ (31.7평)",
         deposit: "3,000만원",
         rent: "210만원",
@@ -195,6 +206,7 @@ const floorData = {
       },
       {
         room: "202호",
+        saleArea: "88.32㎡ (26.72평)",
         area: "50.51㎡ (15.3평)",
         deposit: "2,000만원",
         rent: "100만원",
@@ -207,6 +219,8 @@ const floorData = {
       },
       {
         room: "203호",
+        saleArea: "81.89㎡ (24.77평)",
+        area: "46.83㎡ (14.1평)",
       },
     ],
   },
@@ -215,9 +229,10 @@ const floorData = {
     title: "1층 · 상가",
     rooms: [
       {
-        room: "101호",
-        area: "54.82㎡ (16.6평)",
-        deposit: "2,000만원",
+        room: "101호·102호",
+        saleArea: "95.86㎡ (28.99평)",
+        area: "54.82㎡ (16.58평)",
+        deposit: "3,000만원",
         rent: "160만원",
         link: "room-101.html",
         images: [
@@ -231,10 +246,8 @@ const floorData = {
       },
       {
         room: "103호",
+        saleArea: "308.93㎡ (93.45평)",
         area: "176.66㎡ (53.5평)",
-        deposit: "6,000만원",
-        rent: "520만원",
-        note: "현재 감자탕집 운영중",
       },
     ],
   },
@@ -295,8 +308,12 @@ function renderFloor(key) {
       <${cardTag} class="${r.link ? "room room-linked" : "room"}" ${r.link ? `href="${r.link}"` : ""}>
         <div class="room-head">
           <span class="room-number">${r.room}</span>
-          ${r.area ? `<span class="room-area">${r.area}</span>` : ""}
         </div>
+        ${r.saleArea || r.area ? `
+        <div class="room-areas">
+          ${r.saleArea ? `<span>분양면적 ${r.saleArea}</span>` : ""}
+          ${r.area ? `<span>전용면적 ${r.area}</span>` : ""}
+        </div>` : ""}
         ${r.deposit ? `
         <div class="room-terms">
           <span>보증금 ${r.deposit}</span>
