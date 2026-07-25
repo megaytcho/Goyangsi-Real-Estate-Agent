@@ -232,10 +232,6 @@ body {
   letter-spacing: 0.01em;
 }
 
-.hero-plain {
-  background: linear-gradient(160deg, #0b0f14, #1c2b33);
-}
-
 .scroll-cue {
   position: absolute;
   bottom: 36px;
@@ -325,6 +321,10 @@ section {
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+}
+
+.specs-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 /* ---------- Surroundings ---------- */
@@ -1235,15 +1235,6 @@ footer {
 
 .composition-panel-empty {
   cursor: default;
-}
-
-.composition-panel-plain {
-  background: #eef1f0;
-  transition: background 0.35s ease;
-}
-
-.composition-panel-plain:hover {
-  background: #e6ebe9;
 }
 
 .panel-label {
