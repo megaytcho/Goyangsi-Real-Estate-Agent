@@ -68,23 +68,27 @@ function initSlider({ slider, dotsEl, prevBtn, nextBtn, dotClass, hoverContainer
   };
 }
 
-initSlider({
-  slider: document.getElementById("hero-slider"),
-  dotsEl: document.getElementById("hero-dots"),
-  prevBtn: document.getElementById("hero-prev"),
-  nextBtn: document.getElementById("hero-next"),
-  dotClass: "hero-dot",
-  hoverContainer: document.querySelector(".hero"),
-});
+if (document.getElementById("hero-slider")) {
+  initSlider({
+    slider: document.getElementById("hero-slider"),
+    dotsEl: document.getElementById("hero-dots"),
+    prevBtn: document.getElementById("hero-prev"),
+    nextBtn: document.getElementById("hero-next"),
+    dotClass: "hero-dot",
+    hoverContainer: document.querySelector(".hero"),
+  });
+}
 
-initSlider({
-  slider: document.getElementById("outside-slider"),
-  dotsEl: document.getElementById("outside-dots"),
-  prevBtn: document.getElementById("outside-prev"),
-  nextBtn: document.getElementById("outside-next"),
-  dotClass: "outside-dot",
-  hoverContainer: document.querySelector(".outside-slider-wrap"),
-});
+if (document.getElementById("outside-slider")) {
+  initSlider({
+    slider: document.getElementById("outside-slider"),
+    dotsEl: document.getElementById("outside-dots"),
+    prevBtn: document.getElementById("outside-prev"),
+    nextBtn: document.getElementById("outside-next"),
+    dotClass: "outside-dot",
+    hoverContainer: document.querySelector(".outside-slider-wrap"),
+  });
+}
 
 const floorData = {
   f5: {
@@ -360,7 +364,9 @@ floors.forEach((floor) => {
   floor.addEventListener("click", () => showFloor(floor));
 });
 
-renderFloor("f1");
+if (roomsEl) {
+  renderFloor("f1");
+}
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -376,9 +382,11 @@ document.querySelectorAll(".section-heading").forEach((el) => observer.observe(e
 const contactMessage = document.getElementById("contact-message");
 const contactMessageCount = document.getElementById("contact-message-count");
 
-contactMessage.addEventListener("input", () => {
-  contactMessageCount.textContent = contactMessage.value.length;
-});
+if (contactMessage && contactMessageCount) {
+  contactMessage.addEventListener("input", () => {
+    contactMessageCount.textContent = contactMessage.value.length;
+  });
+}
 
 const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/gJgCUKEi";
 
@@ -386,51 +394,73 @@ const contactSubmitBtn = document.getElementById("contact-submit");
 const contactNameInput = document.getElementById("contact-name");
 const contactPhoneInput = document.getElementById("contact-phone");
 const contactUnitSelect = document.getElementById("contact-unit");
+const contactSection = document.querySelector(".contact-section");
 
-contactSubmitBtn.addEventListener("click", () => {
-  const name = contactNameInput.value.trim();
-  const phone = contactPhoneInput.value.trim();
-  const unit = contactUnitSelect.options[contactUnitSelect.selectedIndex].text;
-  const message = contactMessage.value.trim();
+if (contactSubmitBtn) {
+  contactSubmitBtn.addEventListener("click", () => {
+    const name = contactNameInput.value.trim();
+    const phone = contactPhoneInput.value.trim();
+    const message = contactMessage.value.trim();
+    const listingName = (contactSection && contactSection.dataset.listingName) || "루체아빌딩";
 
-  if (!name || !phone) {
-    alert("성함과 연락처를 입력해주세요.");
-    return;
-  }
+    if (!name || !phone) {
+      alert("성함과 연락처를 입력해주세요.");
+      return;
+    }
 
-  const text = `[루체아빌딩 문의]\n성함: ${name}\n연락처: ${phone}\n선호 호수: ${unit}\n문의 사항: ${message || "없음"}`;
+    const unitLine = contactUnitSelect
+      ? `\n선호 호수: ${contactUnitSelect.options[contactUnitSelect.selectedIndex].text}`
+      : "";
+    const text = `[${listingName} 문의]\n성함: ${name}\n연락처: ${phone}${unitLine}\n문의 사항: ${message || "없음"}`;
 
-  window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer");
+    window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer");
 
-  navigator.clipboard
-    .writeText(text)
-    .then(() => {
-      alert("문의 내용이 복사되었습니다. 열리는 카카오톡 채팅방에 붙여넣기 해주세요.");
-    })
-    .catch(() => {
-      alert("문의 내용을 자동으로 복사하지 못했습니다. 카카오톡 채팅방에 직접 입력해주세요.");
-    });
-});
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("문의 내용이 복사되었습니다. 열리는 카카오톡 채팅방에 붙여넣기 해주세요.");
+      })
+      .catch(() => {
+        alert("문의 내용을 자동으로 복사하지 못했습니다. 카카오톡 채팅방에 직접 입력해주세요.");
+      });
+  });
+}
 
 const naverMapEl = document.getElementById("naver-map");
 
 if (naverMapEl && window.naver && window.naver.maps) {
-  const buildingPosition = new naver.maps.LatLng(37.6444917, 126.8785433);
+  const mapTitle = naverMapEl.dataset.title || "위치";
 
-  const map = new naver.maps.Map(naverMapEl, {
-    center: buildingPosition,
-    zoom: 17,
-    zoomControl: false,
-    mapTypeControl: false,
-    scaleControl: true,
-    scaleControlOptions: {
-      position: naver.maps.Position.BOTTOM_LEFT,
-    },
-  });
+  const renderMap = (position) => {
+    const map = new naver.maps.Map(naverMapEl, {
+      center: position,
+      zoom: 17,
+      zoomControl: false,
+      mapTypeControl: false,
+      scaleControl: true,
+      scaleControlOptions: {
+        position: naver.maps.Position.BOTTOM_LEFT,
+      },
+    });
 
-  new naver.maps.Marker({
-    position: buildingPosition,
-    map,
-    title: "루체아빌딩",
-  });
+    new naver.maps.Marker({
+      position,
+      map,
+      title: mapTitle,
+    });
+  };
+
+  const lat = naverMapEl.dataset.lat;
+  const lng = naverMapEl.dataset.lng;
+  const address = naverMapEl.dataset.address;
+
+  if (lat && lng) {
+    renderMap(new naver.maps.LatLng(parseFloat(lat), parseFloat(lng)));
+  } else if (address && naver.maps.Service) {
+    naver.maps.Service.geocode({ query: address }, (status, response) => {
+      if (status !== naver.maps.Service.Status.OK || !response.v2.addresses.length) return;
+      const result = response.v2.addresses[0];
+      renderMap(new naver.maps.LatLng(result.y, result.x));
+    });
+  }
 }

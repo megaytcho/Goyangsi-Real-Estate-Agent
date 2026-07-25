@@ -12,11 +12,13 @@
     <div class="nav-inner">
       <div class="nav-left">
         <a href="index.html" class="nav-home">홈</a>
+        <a href="RucheaBuilding.html" class="nav-link">루체아 빌딩</a>
         <a href="#top" class="nav-logo">신원동 셀프 세차장</a>
       </div>
       <div class="nav-links">
         <a href="#overview" class="nav-link">개요</a>
-        <a href="#contact" class="nav-link">문의</a>
+        <a href="#surroundings" class="nav-link">주변 환경</a>
+        <a href="#contact" class="nav-link">문의 · 찾아오시는 길</a>
       </div>
     </div>
   </nav>
@@ -69,26 +71,79 @@
     <p class="lease-note">보증금 · 임대료는 현재 운영중인 세차장의 임차 조건 기준이며, 매매가 및 상세 조건은 문의 바랍니다.</p>
   </section>
 
-  <section class="contact-section" id="contact">
+  <section class="surroundings-section" id="surroundings">
     <div class="section-heading in-view">
-      <h2>문의</h2>
+      <h2>주변 환경</h2>
+      <p>신원동 셀프 세차장 주변 환경과 개발 계획을 확인해보세요.</p>
+    </div>
+
+    <div class="development-status">
+      <h3>주변 환경 및 개발 계획</h3>
+      <ul>
+        <li>
+          일반상업지역으로 상업시설 및 주변 아파트 단지 등 주거 단지 Infra 구축 완료된 삼송택지개발지역
+          <ul class="sub-list">
+            <li>반경 1km이내 배후세대 10,497세대, 거주인구 2만 5,696명 추정, 직장인구 3,597명(마이프차 자료)</li>
+            <li>반경 3km이내 배후세대 51,637세대, 거주인구 11만 6,459명 추정, 직장인구 2만 4,032명(마이프차 자료)</li>
+          </ul>
+        </li>
+        <li>
+          삼송지구, 창릉3기 신도시 개발 연계
+          <ul class="sub-list">
+            <li>고양은평선 신설, 관공서(동고양세무서 이전, 한국환경공단 수도권서부환경본부 신청사 신축, 구청 등) 예정</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact" data-listing-name="신원동 셀프 세차장">
+    <div class="section-heading in-view">
+      <h2>문의 · 찾아오시는 길</h2>
       <p>매물 관련 문의를 남겨주시면 확인 후 연락드리겠습니다.</p>
     </div>
 
-    <div class="carwash-contact-card">
-      <p class="carwash-contact-text">신원동 셀프 세차장 매물에 관심 있으신가요?<br>카카오톡으로 편하게 문의해주세요.</p>
-      <a
-        class="carwash-contact-button"
-        href="https://open.kakao.com/o/gJgCUKEi"
-        target="_blank"
-        rel="noopener noreferrer"
-      >카카오톡으로 문의하기</a>
-      <a
-        class="contact-map-link"
-        href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B3%A0%EC%96%91%EC%8B%9C%20%EB%8D%95%EC%96%91%EA%B5%AC%20%EC%8B%A0%EC%9B%901%EB%A1%9C%2016"
-        target="_blank"
-        rel="noopener noreferrer"
-      >네이버 지도에서 보기</a>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <h3 class="contact-form-heading">문의</h3>
+
+        <div class="form-field">
+          <label for="contact-name">성함</label>
+          <input type="text" id="contact-name" name="name" placeholder="이름을 입력해주세요" autocomplete="name">
+        </div>
+
+        <div class="form-field">
+          <label for="contact-phone">연락처</label>
+          <input type="tel" id="contact-phone" name="phone" placeholder="010-1234-5678" autocomplete="tel">
+        </div>
+
+        <div class="form-field">
+          <label for="contact-message">문의 사항</label>
+          <textarea id="contact-message" name="message" rows="4" maxlength="250" placeholder="문의하실 내용을 입력해주세요"></textarea>
+          <div class="char-count"><span id="contact-message-count">0</span> / 250</div>
+        </div>
+
+        <button type="button" class="contact-submit" id="contact-submit">문의하기</button>
+      </div>
+
+      <div class="contact-map">
+        <h3 class="contact-map-heading">찾아오시는 길</h3>
+        <div class="contact-map-canvas">
+          <div
+            id="naver-map"
+            data-address="경기도 고양시 덕양구 신원1로 16"
+            data-title="신원동 셀프 세차장"
+            role="img"
+            aria-label="신원동 셀프 세차장 위치 지도 (네이버 지도)"
+          ></div>
+        </div>
+        <a
+          class="contact-map-link"
+          href="https://map.naver.com/p/search/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EA%B3%A0%EC%96%91%EC%8B%9C%20%EB%8D%95%EC%96%91%EA%B5%AC%20%EC%8B%A0%EC%9B%901%EB%A1%9C%2016"
+          target="_blank"
+          rel="noopener noreferrer"
+        >네이버 지도에서 보기</a>
+      </div>
     </div>
   </section>
 
@@ -96,5 +151,7 @@
     <p>신원동 셀프 세차장 · 고양시</p>
   </footer>
 
+  <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=cnui9vumvd&submodules=geocoder"></script>
+  <script src="script.js"></script>
 </body>
 </html>
