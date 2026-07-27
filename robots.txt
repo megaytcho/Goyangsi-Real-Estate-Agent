@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://megaytcho.github.io/Goyangsi-Real-Estate-Agent/sitemap.xml
