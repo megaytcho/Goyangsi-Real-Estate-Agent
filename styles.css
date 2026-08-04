@@ -372,6 +372,20 @@ section {
   counter-increment: feature-count;
 }
 
+.instagram-link {
+  display: block;
+  margin-top: 28px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.instagram-link:hover {
+  text-decoration: underline;
+}
+
 .feature-highlight-card li::before {
   content: counter(feature-count);
   position: absolute;
