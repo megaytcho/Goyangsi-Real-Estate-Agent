@@ -388,7 +388,7 @@ if (contactMessage && contactMessageCount) {
   });
 }
 
-const KAKAO_OPEN_CHAT_URL = "https://open.kakao.com/o/gJgCUKEi";
+const CONTACT_SMS_NUMBER = "01042611310";
 
 const contactSubmitBtn = document.getElementById("contact-submit");
 const contactNameInput = document.getElementById("contact-name");
@@ -413,16 +413,9 @@ if (contactSubmitBtn) {
       : "";
     const text = `[${listingName} 문의]\n성함: ${name}\n연락처: ${phone}${unitLine}\n문의 사항: ${message || "없음"}`;
 
-    window.open(KAKAO_OPEN_CHAT_URL, "_blank", "noopener,noreferrer");
-
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        alert("문의 내용이 복사되었습니다. 열리는 카카오톡 채팅방에 붙여넣기 해주세요.");
-      })
-      .catch(() => {
-        alert("문의 내용을 자동으로 복사하지 못했습니다. 카카오톡 채팅방에 직접 입력해주세요.");
-      });
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const separator = isIOS ? "&" : "?";
+    window.location.href = `sms:${CONTACT_SMS_NUMBER}${separator}body=${encodeURIComponent(text)}`;
   });
 }
 
