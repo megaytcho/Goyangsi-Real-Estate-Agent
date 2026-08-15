@@ -1156,12 +1156,6 @@ footer {
 
 .footer-phone {
   display: inline-block;
-  background: var(--bg);
-  color: var(--text);
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 1rem;
 }
 
 .footer-qr {
